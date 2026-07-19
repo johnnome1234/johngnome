@@ -930,7 +930,7 @@ PanelWindow {
                 ? (mediaMouseArea.containsMouse ? Qt.resolvedUrl("assets/alien_squish.svg") : Qt.resolvedUrl("assets/alien_idle.svg"))
                 : (mediaMouseArea.containsMouse ? Qt.resolvedUrl("assets/bongo_squish.png") : Qt.resolvedUrl("assets/bongo_idle.png"))
             height: 20 * window.autoUiScale
-            width: (mediaPlayer.activePlayer === null || mediaPlayer.overrideCat) ? 80 : 20
+            width: ((mediaPlayer.activePlayer === null || mediaPlayer.overrideCat) ? 80 : 20) * window.autoUiScale
             opacity: (mediaPlayer.activePlayer === null || mediaPlayer.overrideCat) ? 1.0 : 0.0
             visible: opacity > 0
             Behavior on width { enabled: Settings.animationEnabled; NumberAnimation { duration: 400; easing.type: Easing.InOutBack } }
@@ -939,7 +939,7 @@ PanelWindow {
         
         Image {
             anchors.top: parent.top
-            anchors.topMargin: -2
+            anchors.topMargin: -2 * window.autoUiScale
             anchors.right: parent.right
             anchors.rightMargin: 6
             source: mediaPlayer.useAlien 
