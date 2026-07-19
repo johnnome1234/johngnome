@@ -11,6 +11,7 @@ import Quickshell.Bluetooth
 
 PanelWindow {
     id: window
+    property real autoUiScale: Settings.autoScale ? (Settings.barHeight / 40.0) : 1.0
     anchors {
         top: true
         left: true
@@ -887,7 +888,7 @@ PanelWindow {
         anchors.rightMargin: 16
         anchors.top: parent.top
         anchors.topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
-        height: 28
+        height: 28 * window.autoUiScale
         property bool overrideCat: false
         property bool useAlien: Settings.mediaPet === "alien"
         width: (mediaPlayer.activePlayer === null || mediaPlayer.overrideCat) ? 104 : (mediaRow.width + 24)
@@ -928,7 +929,7 @@ PanelWindow {
             source: mediaPlayer.useAlien 
                 ? (mediaMouseArea.containsMouse ? Qt.resolvedUrl("assets/alien_squish.svg") : Qt.resolvedUrl("assets/alien_idle.svg"))
                 : (mediaMouseArea.containsMouse ? Qt.resolvedUrl("assets/bongo_squish.png") : Qt.resolvedUrl("assets/bongo_idle.png"))
-            height: 20
+            height: 20 * window.autoUiScale
             width: (mediaPlayer.activePlayer === null || mediaPlayer.overrideCat) ? 80 : 20
             opacity: (mediaPlayer.activePlayer === null || mediaPlayer.overrideCat) ? 1.0 : 0.0
             visible: opacity > 0
@@ -944,8 +945,8 @@ PanelWindow {
             source: mediaPlayer.useAlien 
                 ? (miniBongoMouse.containsMouse ? Qt.resolvedUrl("assets/alien_squish.svg") : Qt.resolvedUrl("assets/alien_idle.svg"))
                 : (miniBongoMouse.containsMouse ? Qt.resolvedUrl("assets/bongo_squish.png") : Qt.resolvedUrl("assets/bongo_idle.png"))
-            height: 14
-            width: 14
+            height: 14 * window.autoUiScale
+            width: 14 * window.autoUiScale
             fillMode: Image.PreserveAspectFit
             z: 10
             opacity: (mediaPlayer.activePlayer !== null && !mediaPlayer.overrideCat) ? 1.0 : 0.0
@@ -973,14 +974,14 @@ PanelWindow {
         Row {
             id: mediaRow
             anchors.centerIn: parent
-            spacing: 8
+            spacing: 8 * window.autoUiScale
             opacity: (mediaPlayer.activePlayer !== null && !mediaPlayer.overrideCat) ? 1.0 : 0.0
             visible: opacity > 0
             Behavior on opacity { enabled: Settings.animationEnabled; NumberAnimation { duration: 300 } }
             
             Text {
                 font.family: materialFont.name
-                font.pixelSize: 26
+                font.pixelSize: 26 * window.autoUiScale
                 text: "skip_previous"
                 color: prevMouse.containsMouse ? "#ffffff" : Settings.textPrimary
                 anchors.verticalCenter: parent.verticalCenter
@@ -1001,7 +1002,7 @@ PanelWindow {
 
             Text {
                 font.family: materialFont.name
-                font.pixelSize: 26
+                font.pixelSize: 26 * window.autoUiScale
                 text: mediaPlayer.activePlayer ? (mediaPlayer.activePlayer.isPlaying ? "pause" : "play_arrow") : "music_note"
                 color: playMouse.containsMouse ? "#ffffff" : Settings.textPrimary
                 anchors.verticalCenter: parent.verticalCenter
@@ -1022,7 +1023,7 @@ PanelWindow {
 
             Text {
                 font.family: materialFont.name
-                font.pixelSize: 26
+                font.pixelSize: 26 * window.autoUiScale
                 text: "skip_next"
                 color: nextMouse.containsMouse ? "#ffffff" : Settings.textPrimary
                 anchors.verticalCenter: parent.verticalCenter
@@ -1046,7 +1047,7 @@ PanelWindow {
             Text {
                 id: trackText
                 font.family: helveticaFont.name
-                font.pixelSize: 18
+                font.pixelSize: 18 * window.autoUiScale
                 text: mediaPlayer.activePlayer ? (mediaPlayer.activePlayer.trackTitle + (mediaPlayer.activePlayer.trackArtist ? " - " + mediaPlayer.activePlayer.trackArtist : "")) : ""
                 color: Settings.textPrimary
                 anchors.verticalCenter: parent.verticalCenter
@@ -1521,7 +1522,7 @@ PanelWindow {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
-        spacing: 8
+        spacing: 8 * window.autoUiScale
 
         Repeater {
             model: 6
@@ -1538,8 +1539,8 @@ PanelWindow {
                 property bool hasClients: tagInfo ? tagInfo.client_count > 0 : false
 
                 width: isActive ? 20 : 8
-                height: 8
-                radius: 4
+                height: 8 * window.autoUiScale
+                radius: 4 * window.autoUiScale
 
                 Behavior on width { enabled: Settings.animationEnabled;
                     NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
@@ -1577,20 +1578,20 @@ PanelWindow {
         id: settingsButton
         anchors {
             left: parent.left
-            leftMargin: 20 
+            leftMargin: 20 * window.autoUiScale
             top: parent.top
             topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
-        width: 32
-        height: 32
+        width: 32 * window.autoUiScale
+        height: 32 * window.autoUiScale
         color: (settingsMenuOpen || settingsMouseArea.containsMouse) ? Settings.hoverColor : "transparent"
-        radius: 16
+        radius: 16 * window.autoUiScale
         
         Text {
             anchors.centerIn: parent
             text: "settings"
             font.family: "Material Icons"
-            font.pixelSize: 22
+            font.pixelSize: 22 * window.autoUiScale
             color: Settings.textPrimary
             Behavior on color { enabled: Settings.animationEnabled; ColorAnimation { duration: 150 } }
         }
@@ -1619,14 +1620,14 @@ PanelWindow {
         id: bellWidget
         anchors {
             left: settingsButton.right
-            leftMargin: 12
+            leftMargin: 12 * window.autoUiScale
             top: parent.top
             topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
-        height: 28
-        width: 28
+        height: 28 * window.autoUiScale
+        width: 28 * window.autoUiScale
         color: bellMouseArea.containsMouse ? Settings.hoverColor : Settings.hoverLight
-        radius: 14
+        radius: 14 * window.autoUiScale
         scale: bellMouseArea.containsMouse ? 1.05 : 1.0
 
         Behavior on color { enabled: Settings.animationEnabled; ColorAnimation { duration: 200 } }
@@ -1634,8 +1635,8 @@ PanelWindow {
         
         Image {
             anchors.centerIn: parent
-            width: 20
-            height: 20
+            width: 20 * window.autoUiScale
+            height: 20 * window.autoUiScale
             source: Qt.resolvedUrl("assets/coke_bottle_icon.jpg")
             fillMode: Image.PreserveAspectFit
             opacity: activeReminderCount > 0 ? 1.0 : 0.6
@@ -1643,9 +1644,9 @@ PanelWindow {
 
         Rectangle {
             id: badge
-            width: 14
-            height: 14
-            radius: 7
+            width: 14 * window.autoUiScale
+            height: 14 * window.autoUiScale
+            radius: 7 * window.autoUiScale
             color: Settings.notificationBadge
             anchors {
                 top: parent.top
@@ -1657,7 +1658,7 @@ PanelWindow {
                 anchors.centerIn: parent
                 text: activeReminderCount.toString()
                 color: Settings.textOnDark
-                font.pixelSize: 9
+                font.pixelSize: 9 * window.autoUiScale
                 font.bold: true
             }
         }
@@ -1694,14 +1695,14 @@ PanelWindow {
         id: wifiContainer
         anchors {
             right: parent.right
-            rightMargin: 20 
+            rightMargin: 20 * window.autoUiScale
             top: parent.top
             topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
-        height: 28
-        width: 108
+        height: 28 * window.autoUiScale
+        width: 108 * window.autoUiScale
         color: (wifiPopupOpen || wifiMouseArea.containsMouse) ? Settings.hoverColor : Settings.hoverLight
-        radius: 14
+        radius: 14 * window.autoUiScale
         scale: (wifiPopupOpen || wifiMouseArea.containsMouse) ? 1.05 : 1.0
 
         Behavior on color { enabled: Settings.animationEnabled; ColorAnimation { duration: 200 } }
@@ -1709,13 +1710,13 @@ PanelWindow {
 
         Row {
             anchors.centerIn: parent
-            spacing: 5
+            spacing: 5 * window.autoUiScale
 
             Text {
                 text: "wifi"
                 font.family: materialFont.name
                 color: Settings.textPrimary
-                font.pixelSize: 20
+                font.pixelSize: 20 * window.autoUiScale
                 opacity: wifiConnected ? 1.0 : 0.4
             }
 
@@ -1723,7 +1724,7 @@ PanelWindow {
                 text: "bluetooth"
                 font.family: materialFont.name
                 color: Settings.textPrimary
-                font.pixelSize: 20
+                font.pixelSize: 20 * window.autoUiScale
                 opacity: isBluetoothOn ? 1.0 : 0.4
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -1739,7 +1740,7 @@ PanelWindow {
                 }
                 font.family: materialFont.name
                 color: Settings.textPrimary
-                font.pixelSize: 20
+                font.pixelSize: 20 * window.autoUiScale
                 anchors.verticalCenter: parent.verticalCenter
             }
 
@@ -1747,7 +1748,7 @@ PanelWindow {
                 text: getBatteryIcon(batteryPercent, batteryCharging)
                 font.family: materialFont.name
                 color: batteryPercent <= 15 ? Settings.errorColor : Settings.textPrimary
-                font.pixelSize: 20
+                font.pixelSize: 20 * window.autoUiScale
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
@@ -2781,11 +2782,11 @@ PanelWindow {
         id: timeContainer
         anchors {
             right: wifiContainer.left
-            rightMargin: 10 
+            rightMargin: 10 * window.autoUiScale
             top: parent.top
             topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
-        height: 28
+        height: 28 * window.autoUiScale
         width: clockRow.width + 24
         color: isCalendarHovered ? Settings.hoverColor : Settings.hoverLight 
         radius: height / 2
@@ -2797,13 +2798,13 @@ PanelWindow {
         Row {
             id: clockRow
             anchors.centerIn: parent
-            spacing: 5
+            spacing: 5 * window.autoUiScale
 
             Text {
                 text: "calendar_today"
                 font.family: materialFont.name
                 color: Settings.textPrimary
-                font.pixelSize: 18
+                font.pixelSize: 18 * window.autoUiScale
                 anchors.verticalCenter: parent.verticalCenter
             }
 
@@ -2811,7 +2812,7 @@ PanelWindow {
                 id: timeText
                 text: Qt.formatDateTime(GlobalClock.date, "hh:mm ap")
                 color: Settings.textPrimary
-                font.pixelSize: 18
+                font.pixelSize: 18 * window.autoUiScale
                 font.bold: false
                 font.family: helveticaFont.name
                 anchors.verticalCenter: parent.verticalCenter
