@@ -3,12 +3,12 @@
 
 [shell]
 ui_scale = 1.0
-corner_radius = 27
+corner_radius = 7
 font_family = "sans-serif"
 time_format = "hh:mm AP"
 date_format = "MMMM yyyy"
 exclusive_zone = 45
-bar_height = 70
+bar_height = 44
 
 auto_scale = true
 [shell.animation]

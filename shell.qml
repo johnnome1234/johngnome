@@ -11,7 +11,7 @@ import Quickshell.Bluetooth
 
 PanelWindow {
     id: window
-    property real autoUiScale: Settings.autoScale ? (Settings.barHeight / 70.0) : 1.0
+    property real autoUiScale: Settings.autoScale ? ((Settings.barHeight - Settings.cornerRadius) / 43.0) : 1.0
     anchors {
         top: true
         left: true
@@ -1279,7 +1279,7 @@ PanelWindow {
                     Rectangle {
                         x: mprisVolumeRow.currentMediaVolume * (parent.width - width)
                         anchors.verticalCenter: parent.verticalCenter
-                        width: mprisVolDragArea.containsMouse ? 10 : 8
+                        width: (mprisVolDragArea.containsMouse ? 10 : 8) * window.autoUiScale
                         height: width
                         radius: width / 2
                         color: mprisVolDragArea.containsMouse ? Settings.accentColor : Settings.textPrimary
@@ -1459,7 +1459,7 @@ PanelWindow {
                         id: mediaSliderHandle
                         x: parent.progress * (parent.width - width)
                         anchors.verticalCenter: parent.verticalCenter
-                        width: sliderDragArea.containsMouse || mediaSliderDragging ? 14 : 10
+                        width: (sliderDragArea.containsMouse || mediaSliderDragging ? 14 : 10) * window.autoUiScale
                         height: width
                         radius: width / 2
                         color: sliderDragArea.containsMouse || mediaSliderDragging ? Settings.accentColor : Settings.textPrimary
@@ -1538,7 +1538,7 @@ PanelWindow {
                 property bool isActive: wsIndex === activeWorkspace
                 property bool hasClients: tagInfo ? tagInfo.client_count > 0 : false
 
-                width: isActive ? 20 : 8
+                width: (isActive ? 20 : 8) * window.autoUiScale
                 height: 8 * window.autoUiScale
                 radius: 4 * window.autoUiScale
 
@@ -2347,7 +2347,7 @@ PanelWindow {
                                     clip: true
                                     
                                     property bool isSelected: window.selectedSsid === modelData.ssid
-                                    height: isSelected ? 76 : 36
+                                    height: (isSelected ? 76 : 36) * window.autoUiScale
                                     radius: 8
                                     color: (listNetMouse.containsMouse || isSelected) ? Settings.hoverColor : "transparent"
     
@@ -2522,7 +2522,7 @@ PanelWindow {
                             spacing: 8
                             
                             Rectangle {
-                                width: isBluetoothScanning ? 65 : 50
+                                width: (isBluetoothScanning ? 65 : 50) * window.autoUiScale
                                 height: 20
                                 radius: 10
                                 color: isBluetoothScanning ? Settings.accentColor : Settings.surfaceColor
@@ -3173,8 +3173,8 @@ PanelWindow {
                     Image {
                         anchors.centerIn: parent
                         source: (currentSystemNotification && currentSystemNotification.icon !== "") ? (currentSystemNotification.icon.startsWith("image://icon/") ? currentSystemNotification.icon : "image://icon/" + currentSystemNotification.icon) + "?fallback=dialog-information" : Quickshell.iconPath("preferences-system-notifications", "dialog-information")
-                        sourceSize.width: (currentSystemNotification && currentSystemNotification.icon !== "") ? 36 : 20
-                        sourceSize.height: (currentSystemNotification && currentSystemNotification.icon !== "") ? 36 : 20
+                        sourceSize.width: ((currentSystemNotification && currentSystemNotification.icon !== "") ? 36 : 20) * window.autoUiScale
+                        sourceSize.height: ((currentSystemNotification && currentSystemNotification.icon !== "") ? 36 : 20) * window.autoUiScale
                         fillMode: Image.PreserveAspectFit
                     }
                 }
@@ -3411,8 +3411,8 @@ PanelWindow {
                                             anchors.centerIn: parent
                                             property string iconSrc: modelData.appIcon ? modelData.appIcon : (modelData.image ? modelData.image : "")
                                             source: iconSrc ? (iconSrc.startsWith("image://icon/") ? iconSrc : "image://icon/" + iconSrc) + "?fallback=dialog-information" : Quickshell.iconPath("preferences-system-notifications", "dialog-information")
-                                            sourceSize.width: iconSrc ? 24 : 14
-                                            sourceSize.height: iconSrc ? 24 : 14
+                                            sourceSize.width: (iconSrc ? 24 : 14) * window.autoUiScale
+                                            sourceSize.height: (iconSrc ? 24 : 14) * window.autoUiScale
                                             fillMode: Image.PreserveAspectFit
                                         }
                                     }
