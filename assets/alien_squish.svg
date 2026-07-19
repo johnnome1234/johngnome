@@ -1,0 +1,30 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <g transform="translate(0, 0)">
+      <!-- Scalloped Cloud Base (Red) -->
+      <path d="M 150.0 90.0 Q 201.6 132.1 135.4 125.4 Q 142.1 191.6 100.0 140.0 Q 57.9 191.6 64.6 125.4 Q -1.6 132.1 50.0 90.0 Q -1.6 47.9 64.6 54.6 Q 57.9 -11.6 100.0 40.0 Q 142.1 -11.6 135.4 54.6 Q 201.6 47.9 150.0 90.0 Z" fill="#FF4500" />
+      <!-- Scalloped Inner Cloud (Yellow) -->
+      <path d="M 135.0 90.0 Q 169.3 118.7 124.7 114.7 Q 128.7 159.3 100.0 125.0 Q 71.3 159.3 75.3 114.7 Q 30.7 118.7 65.0 90.0 Q 30.7 61.3 75.3 65.3 Q 71.3 20.7 100.0 55.0 Q 128.7 20.7 124.7 65.3 Q 169.3 61.3 135.0 90.0 Z" fill="#FFD700" />
+      <!-- Scalloped Center Cloud (White) -->
+      <path d="M 120.0 90.0 Q 141.6 107.2 114.1 104.1 Q 117.2 131.6 100.0 110.0 Q 82.8 131.6 85.9 104.1 Q 58.4 107.2 80.0 90.0 Q 58.4 72.8 85.9 75.9 Q 82.8 48.4 100.0 70.0 Q 117.2 48.4 114.1 75.9 Q 141.6 72.8 120.0 90.0 Z" fill="#FFFF00" />
+      <circle cx="100" cy="90" r="15" fill="#FFFFFF" />
+      
+      <!-- Flying Eyes -->
+      <g transform="translate(-20, -40) rotate(-30, 60, 90)">
+          <circle cx="60" cy="90" r="15" fill="white" />
+          <circle cx="60" cy="90" r="5" fill="black" />
+      </g>
+      <g transform="translate(0, -60) rotate(15, 100, 80)">
+          <circle cx="100" cy="80" r="15" fill="white" />
+          <circle cx="100" cy="80" r="5" fill="black" />
+      </g>
+      <g transform="translate(30, -30) rotate(45, 140, 90)">
+          <circle cx="140" cy="90" r="15" fill="white" />
+          <circle cx="140" cy="90" r="5" fill="black" />
+      </g>
+      
+      <!-- Flying Green Pieces -->
+      <path d="M 10 30 Q 30 10 40 40 Z" fill="#7CFC00" />
+      <path d="M 170 170 Q 150 190 140 160 Z" fill="#7CFC00" />
+      <circle cx="180" cy="20" r="10" fill="#7CFC00" />
+  </g>
+</svg>

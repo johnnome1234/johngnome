@@ -1,0 +1,25 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <g transform="translate(0, 0)">
+      <!-- Antenna -->
+      <line x1="100" y1="50" x2="100" y2="20" stroke="#7CFC00" stroke-width="8" />
+      <circle cx="100" cy="15" r="10" fill="#7CFC00" />
+      <!-- Ears -->
+      <path d="M 30 100 Q -10 60 20 40 Q 50 80 40 100" fill="#7CFC00" />
+      <path d="M 170 100 Q 210 60 180 40 Q 150 80 160 100" fill="#7CFC00" />
+      <!-- Head -->
+      <ellipse cx="100" cy="100" rx="80" ry="50" fill="#7CFC00" />
+      <!-- Eyes -->
+      <circle cx="60" cy="90" r="15" fill="white" />
+      <circle cx="100" cy="80" r="15" fill="white" />
+      <circle cx="140" cy="90" r="15" fill="white" />
+      <circle cx="60" cy="90" r="5" fill="black" />
+      <circle cx="100" cy="80" r="5" fill="black" />
+      <circle cx="140" cy="90" r="5" fill="black" />
+      <!-- Mouth -->
+      <ellipse cx="100" cy="120" rx="15" ry="10" fill="black" />
+      <!-- Collar -->
+      <rect x="55" y="145" width="90" height="15" rx="5" fill="#800080" />
+      <!-- Suit -->
+      <path d="M 65 160 L 135 160 L 150 220 L 50 220 Z" fill="#0000FF" />
+  </g>
+</svg>
