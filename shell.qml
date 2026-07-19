@@ -11,7 +11,7 @@ import Quickshell.Bluetooth
 
 PanelWindow {
     id: window
-    property real autoUiScale: Settings.autoScale ? (Settings.barHeight / 40.0) : 1.0
+    property real autoUiScale: Settings.autoScale ? (Settings.barHeight / 70.0) : 1.0
     anchors {
         top: true
         left: true
