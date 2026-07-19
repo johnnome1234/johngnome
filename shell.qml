@@ -17,7 +17,7 @@ PanelWindow {
         right: true
     }
     implicitHeight: (launcherOpen || settingsMenuOpen || (editorOpen && popupOpen)) ? window.screen.height : Settings.barHeight
-    exclusiveZone: 45 
+    exclusiveZone: Settings.barHeight 
     color: "transparent"
     WlrLayershell.keyboardFocus: ((editorOpen && popupOpen) || window.selectedSsid !== "" || launcherOpen || settingsMenuOpen) ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
