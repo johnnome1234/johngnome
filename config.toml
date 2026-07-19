@@ -10,6 +10,7 @@ date_format = "MMMM yyyy"
 exclusive_zone = 45
 bar_height = 70
 
+auto_scale = true
 [shell.animation]
 enabled = true
 speed = 1.0

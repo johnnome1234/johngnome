@@ -205,6 +205,7 @@ Item {
 
     // animation
     readonly property bool animationEnabled: _get("shell.animation.enabled", true)
+    readonly property bool autoScale: _get("shell.auto_scale", false)
     readonly property real animationSpeed: _get("shell.animation.speed", 1.0)
 
     // weather

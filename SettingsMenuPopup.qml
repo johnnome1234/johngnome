@@ -18,6 +18,7 @@ Item {
     property int initBarHeight: 70
     property bool initAnimationEnabled: true
     property string initMediaPet: "cat"
+    property bool initAutoScale: false
     property bool settingsSaved: false
 
     onIsOpenChanged: {
@@ -26,6 +27,7 @@ Item {
             initBarHeight = Settings.barHeight;
             initAnimationEnabled = Settings.animationEnabled;
             initMediaPet = Settings.mediaPet;
+            initAutoScale = Settings.autoScale;
             settingsSaved = false;
         } else {
             if (!settingsSaved) {
@@ -34,6 +36,7 @@ Item {
                 Settings.setValue("shell", "bar_height", initBarHeight, true);
                 Settings.setValue("shell.animation", "enabled", initAnimationEnabled, true);
                 Settings.setValue("widgets.media", "pet", initMediaPet, true);
+                Settings.setValue("shell", "auto_scale", initAutoScale, true);
             }
         }
     }
@@ -450,6 +453,58 @@ Item {
                                 }
                             }
                         }
+
+                        Row {
+                            width: parent.width
+                            spacing: 15
+                            Text {
+                                text: "auto scale UI"
+                                color: Settings.textPrimary
+                                font.pixelSize: 14
+                                width: 130
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+
+                            Rectangle {
+                                width: 44
+                                height: 24
+                                radius: 12
+                                color: Settings.autoScale ? Settings.accentColor : Settings.hoverLight
+                                anchors.verticalCenter: parent.verticalCenter
+
+                                Rectangle {
+                                    width: 18
+                                    height: 18
+                                    radius: 9
+                                    color: "#ffffff"
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    x: Settings.autoScale ? 23 : 3
+                                    Behavior on x { enabled: Settings.animationEnabled; NumberAnimation { duration: 150 } }
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: {
+                                        Settings.setValue("shell", "auto_scale", !Settings.autoScale, true);
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "(requires quickshell restart)"
+                                color: Settings.textSecondary
+                                font.pixelSize: 10
+                                opacity: 0.6
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            
+                            Item {
+                                width: parent.width - 340 // Spacer
+                                height: 1
+                            }
+                        }
                     }
 
                     // BEHAVIOR SECTION
@@ -642,7 +697,7 @@ Item {
 
                         Text {
                             id: depsText
-                            text: "click detect to check missing packages"
+                            text: "click detect to check missing packages (note: python3 must be installed for this button to work)"
                             color: Settings.textSecondary
                             font.pixelSize: 10
                             wrapMode: Text.WordWrap
@@ -688,7 +743,8 @@ Item {
                         "shell", "corner_radius", Settings.cornerRadius.toString(),
                         "shell", "bar_height", Settings.barHeight.toString(),
                         "shell.animation", "enabled", Settings.animationEnabled ? "true" : "false",
-                        "widgets.media", "pet", Settings.mediaPet
+                        "widgets.media", "pet", Settings.mediaPet,
+                        "shell", "auto_scale", Settings.autoScale ? "true" : "false"
                     ];
                     saveProcess.running = true;
                     closeRequested();
