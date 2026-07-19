@@ -885,7 +885,8 @@ PanelWindow {
         id: mediaPlayer
         anchors.right: workspaceRow.left
         anchors.rightMargin: 16
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        anchors.topMargin: (Settings.barHeight - height) / 2
         height: 28
         property bool overrideCat: false
         property bool useAlien: Settings.mediaPet === "alien"
@@ -1518,7 +1519,8 @@ PanelWindow {
     Row {
         id: workspaceRow
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        anchors.topMargin: (Settings.barHeight - height) / 2
         spacing: 8
 
         Repeater {
@@ -1576,7 +1578,8 @@ PanelWindow {
         anchors {
             left: parent.left
             leftMargin: 20 
-            verticalCenter: parent.verticalCenter
+            top: parent.top
+            topMargin: (Settings.barHeight - height) / 2
         }
         width: 32
         height: 32
@@ -1617,7 +1620,8 @@ PanelWindow {
         anchors {
             left: settingsButton.right
             leftMargin: 12
-            verticalCenter: settingsButton.verticalCenter
+            top: parent.top
+            topMargin: (Settings.barHeight - height) / 2
         }
         height: 28
         width: 28
@@ -1691,7 +1695,8 @@ PanelWindow {
         anchors {
             right: parent.right
             rightMargin: 20 
-            verticalCenter: parent.verticalCenter
+            top: parent.top
+            topMargin: (Settings.barHeight - height) / 2
         }
         height: 28
         width: 108
@@ -2777,7 +2782,8 @@ PanelWindow {
         anchors {
             right: wifiContainer.left
             rightMargin: 10 
-            verticalCenter: parent.verticalCenter
+            top: parent.top
+            topMargin: (Settings.barHeight - height) / 2
         }
         height: 28
         width: clockRow.width + 24
