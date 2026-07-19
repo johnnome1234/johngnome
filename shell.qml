@@ -886,7 +886,7 @@ PanelWindow {
         anchors.right: workspaceRow.left
         anchors.rightMargin: 16
         anchors.top: parent.top
-        anchors.topMargin: (Settings.barHeight - height) / 2
+        anchors.topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         height: 28
         property bool overrideCat: false
         property bool useAlien: Settings.mediaPet === "alien"
@@ -1520,7 +1520,7 @@ PanelWindow {
         id: workspaceRow
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: (Settings.barHeight - height) / 2
+        anchors.topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         spacing: 8
 
         Repeater {
@@ -1579,7 +1579,7 @@ PanelWindow {
             left: parent.left
             leftMargin: 20 
             top: parent.top
-            topMargin: (Settings.barHeight - height) / 2
+            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
         width: 32
         height: 32
@@ -1621,7 +1621,7 @@ PanelWindow {
             left: settingsButton.right
             leftMargin: 12
             top: parent.top
-            topMargin: (Settings.barHeight - height) / 2
+            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
         height: 28
         width: 28
@@ -1696,7 +1696,7 @@ PanelWindow {
             right: parent.right
             rightMargin: 20 
             top: parent.top
-            topMargin: (Settings.barHeight - height) / 2
+            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
         height: 28
         width: 108
@@ -2783,7 +2783,7 @@ PanelWindow {
             right: wifiContainer.left
             rightMargin: 10 
             top: parent.top
-            topMargin: (Settings.barHeight - height) / 2
+            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
         height: 28
         width: clockRow.width + 24
