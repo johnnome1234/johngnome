@@ -458,6 +458,106 @@ Item {
                             width: parent.width
                             spacing: 15
                             Text {
+                                text: "exclusive zone"
+                                color: Settings.textPrimary
+                                font.pixelSize: 14
+                                width: 130
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+
+                            // Slider
+                            Item {
+                                width: parent.width - 275
+                                height: 20
+                                anchors.verticalCenter: parent.verticalCenter
+
+                                Rectangle {
+                                    id: ezTrack
+                                    width: parent.width
+                                    height: 4
+                                    radius: 2
+                                    color: Settings.hoverLight
+                                    anchors.verticalCenter: parent.verticalCenter
+
+                                    Rectangle {
+                                        width: (Settings.exclusiveZone / 100) * parent.width
+                                        height: 4
+                                        radius: 2
+                                        color: Settings.accentColor
+                                    }
+                                }
+
+                                Rectangle {
+                                    x: (Settings.exclusiveZone / 100) * (parent.width - width)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: 14
+                                    height: 14
+                                    radius: 7
+                                    color: Settings.textPrimary
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    anchors.margins: -10
+                                    cursorShape: Qt.PointingHandCursor
+                                    onPositionChanged: function(mouse) {
+                                        if (pressed) {
+                                            var ratio = Math.max(0, Math.min(1, mouse.x / width));
+                                            var val = Math.round(ratio * 100);
+                                            Settings.setValue("shell", "exclusive_zone", val, true);
+                                        }
+                                    }
+                                    onReleased: function(mouse) {
+                                        var ratio = Math.max(0, Math.min(1, mouse.x / width));
+                                        var val = Math.round(ratio * 100);
+                                        Settings.setValue("shell", "exclusive_zone", val, true);
+                                    }
+                                    onClicked: function(mouse) {
+                                        var ratio = Math.max(0, Math.min(1, mouse.x / width));
+                                        var val = Math.round(ratio * 100);
+                                        Settings.setValue("shell", "exclusive_zone", val, true);
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: Settings.exclusiveZone + "px"
+                                color: Settings.textSecondary
+                                font.pixelSize: 12
+                                width: 35
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+
+                            // Reset Button
+                            Rectangle {
+                                width: 40
+                                height: 22
+                                radius: 4
+                                color: resetEzMouse.containsMouse ? Settings.hoverLight : "transparent"
+                                border.color: Settings.borderColor
+                                border.width: 1
+                                anchors.verticalCenter: parent.verticalCenter
+                                Text {
+                                    text: "reset"
+                                    font.pixelSize: 10
+                                    font.bold: true
+                                    color: Settings.textSecondary
+                                    anchors.centerIn: parent
+                                }
+                                MouseArea {
+                                    id: resetEzMouse
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: Settings.setValue("shell", "exclusive_zone", 45, true)
+                                }
+                            }
+                        }
+
+                        Row {
+                            width: parent.width
+                            spacing: 15
+                            Text {
                                 text: "auto scale UI"
                                 color: Settings.textPrimary
                                 font.pixelSize: 14
