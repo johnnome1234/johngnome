@@ -885,8 +885,7 @@ PanelWindow {
         id: mediaPlayer
         anchors.right: workspaceRow.left
         anchors.rightMargin: 16
-        anchors.top: parent.top
-        anchors.topMargin: 6
+        anchors.verticalCenter: parent.verticalCenter
         height: 28
         property bool overrideCat: false
         property bool useAlien: Settings.mediaPet === "alien"
@@ -1067,7 +1066,7 @@ PanelWindow {
         implicitHeight: 200
 
         anchor.rect.x: Math.min(window.width - width - 10, mediaPlayer.x + mediaPlayer.width / 2 - width / 2)
-        anchor.rect.y: 45
+        anchor.rect.y: Settings.barHeight + 5
 
         visible: mediaPopupOpen || mediaPopupRect.opacity > 0.01
         color: "transparent"
@@ -1519,8 +1518,7 @@ PanelWindow {
     Row {
         id: workspaceRow
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
-        anchors.topMargin: 16 
+        anchors.verticalCenter: parent.verticalCenter
         spacing: 8
 
         Repeater {
@@ -1578,8 +1576,7 @@ PanelWindow {
         anchors {
             left: parent.left
             leftMargin: 20 
-            top: parent.top
-            topMargin: 4 
+            verticalCenter: parent.verticalCenter
         }
         width: 32
         height: 32
@@ -1694,8 +1691,7 @@ PanelWindow {
         anchors {
             right: parent.right
             rightMargin: 20 
-            top: parent.top
-            topMargin: 6 
+            verticalCenter: parent.verticalCenter
         }
         height: 28
         width: 108
@@ -1774,7 +1770,7 @@ PanelWindow {
         Behavior on implicitHeight { enabled: Settings.animationEnabled; NumberAnimation { duration: 250; easing.type: Easing.OutCubic } }
         
         anchor.rect.x: Math.min(window.width - width - 10, wifiContainer.x + wifiContainer.width / 2 - width / 2)
-        anchor.rect.y: 45 // offset
+        anchor.rect.y: Settings.barHeight + 5 
         
         visible: wifiPopupOpen || wifiContainerRect.opacity > 0.01
         color: "transparent"
@@ -2781,8 +2777,7 @@ PanelWindow {
         anchors {
             right: wifiContainer.left
             rightMargin: 10 
-            top: parent.top
-            topMargin: 6 
+            verticalCenter: parent.verticalCenter
         }
         height: 28
         width: clockRow.width + 24
@@ -2834,7 +2829,7 @@ PanelWindow {
         implicitHeight: 330
         
         anchor.rect.x: Math.max(10, Math.min(window.width - width - 10, timeContainer.x + timeContainer.width / 2 - width / 2))
-        anchor.rect.y: 45 
+        anchor.rect.y: Settings.barHeight + 5 
         
         visible: popupOpen || container.opacity > 0.01
         color: "transparent"
@@ -3134,7 +3129,7 @@ PanelWindow {
         id: notificationPopup
         anchor.window: window
         anchor.rect.x: window.width - width - 20
-        anchor.rect.y: 45
+        anchor.rect.y: Settings.barHeight + 5
         
         implicitWidth: 320
         implicitHeight: 80
@@ -3242,7 +3237,7 @@ PanelWindow {
         anchor.window: window
         
         anchor.rect.x: Math.max(10, Math.min(window.width - width - 10, bellWidget.x + bellWidget.width / 2 - width / 2))
-        anchor.rect.y: 45
+        anchor.rect.y: Settings.barHeight + 5
         
         implicitWidth: 320
         implicitHeight: Math.min(500, Math.max(150, notificationCount * 80 + activeReminderCount * 50 + 60))
