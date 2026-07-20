@@ -11,7 +11,7 @@ import Quickshell.Bluetooth
 
 PanelWindow {
     id: window
-    property real autoUiScale: Settings.autoScale ? (Settings.barHeight / 70.0) : 1.0
+    property real autoUiScale: Settings.autoScale ? ((Settings.barHeight - Settings.cornerRadius) / 43.0) : 1.0
     anchors {
         top: true
         left: true
@@ -888,13 +888,13 @@ PanelWindow {
         anchors.right: workspaceRow.left
         anchors.rightMargin: 16
         anchors.top: parent.top
-        anchors.topMargin: (Settings.barHeight - height) / 2
+        anchors.topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         height: 28 * window.autoUiScale
         property bool overrideCat: false
         property bool useAlien: Settings.mediaPet === "alien"
         width: (mediaPlayer.activePlayer === null || mediaPlayer.overrideCat) ? 104 : (mediaRow.width + 24)
         radius: height / 2
-        color: (mediaPopupOpen || mediaMouseArea.containsMouse) ? Settings.hoverColor : Settings.hoverLight
+        color: (mediaPopupOpen || mediaMouseArea.containsMouse) ? Settings.hoverColor : Settings.surfaceColor
         scale: (mediaPopupOpen || mediaMouseArea.containsMouse) ? 1.05 : 1.0
 
         Behavior on color { enabled: Settings.animationEnabled; ColorAnimation { duration: 200 } }
@@ -1522,7 +1522,7 @@ PanelWindow {
         id: workspaceRow
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: (Settings.barHeight - height) / 2
+        anchors.topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         spacing: 8 * window.autoUiScale
 
         Repeater {
@@ -1581,7 +1581,7 @@ PanelWindow {
             left: parent.left
             leftMargin: 20 * window.autoUiScale
             top: parent.top
-            topMargin: (Settings.barHeight - height) / 2
+            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
         width: 32 * window.autoUiScale
         height: 32 * window.autoUiScale
@@ -1623,11 +1623,11 @@ PanelWindow {
             left: settingsButton.right
             leftMargin: 12 * window.autoUiScale
             top: parent.top
-            topMargin: (Settings.barHeight - height) / 2
+            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
         height: 28 * window.autoUiScale
         width: 28 * window.autoUiScale
-        color: bellMouseArea.containsMouse ? Settings.hoverColor : Settings.hoverLight
+        color: bellMouseArea.containsMouse ? Settings.hoverColor : Settings.surfaceColor
         radius: 14 * window.autoUiScale
         scale: bellMouseArea.containsMouse ? 1.05 : 1.0
 
@@ -1698,11 +1698,11 @@ PanelWindow {
             right: parent.right
             rightMargin: 20 * window.autoUiScale
             top: parent.top
-            topMargin: (Settings.barHeight - height) / 2
+            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
         height: 28 * window.autoUiScale
         width: 108 * window.autoUiScale
-        color: (wifiPopupOpen || wifiMouseArea.containsMouse) ? Settings.hoverColor : Settings.hoverLight
+        color: (wifiPopupOpen || wifiMouseArea.containsMouse) ? Settings.hoverColor : Settings.surfaceColor
         radius: 14 * window.autoUiScale
         scale: (wifiPopupOpen || wifiMouseArea.containsMouse) ? 1.05 : 1.0
 
@@ -2080,7 +2080,7 @@ PanelWindow {
                     width: 133
                     height: 64
                     radius: 10
-                    color: wifiItemMouse.containsMouse ? Settings.hoverColor : Settings.hoverLight
+                    color: wifiItemMouse.containsMouse ? Settings.hoverColor : Settings.surfaceColor
                     
                     Column {
                         anchors.centerIn: parent
@@ -2136,7 +2136,7 @@ PanelWindow {
                     width: 133
                     height: 64
                     radius: 10
-                    color: bluetoothItemMouse.containsMouse ? Settings.hoverColor : Settings.hoverLight
+                    color: bluetoothItemMouse.containsMouse ? Settings.hoverColor : Settings.surfaceColor
                     
                     Column {
                         anchors.centerIn: parent
@@ -2203,7 +2203,7 @@ PanelWindow {
                     width: 133
                     height: 64
                     radius: 10
-                    color: window.nightLightEnabled ? Settings.accentColor : (nightLightWidgetMouse.containsMouse ? Settings.hoverColor : Settings.hoverLight)
+                    color: window.nightLightEnabled ? Settings.accentColor : (nightLightWidgetMouse.containsMouse ? Settings.hoverColor : Settings.surfaceColor)
                     
                     Column {
                         anchors.centerIn: parent
@@ -2255,7 +2255,7 @@ PanelWindow {
                     width: 133
                     height: 64
                     radius: 10
-                    color: Settings.isDarkMode ? Settings.accentColor : (darkModeWidgetMouse.containsMouse ? Settings.hoverColor : Settings.hoverLight)
+                    color: Settings.isDarkMode ? Settings.accentColor : (darkModeWidgetMouse.containsMouse ? Settings.hoverColor : Settings.surfaceColor)
                     opacity: Settings.syncModeEnabled ? 1.0 : 0.5
                     enabled: Settings.syncModeEnabled
                     
@@ -2787,11 +2787,11 @@ PanelWindow {
             right: wifiContainer.left
             rightMargin: 10 * window.autoUiScale
             top: parent.top
-            topMargin: (Settings.barHeight - height) / 2
+            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
         }
         height: 28 * window.autoUiScale
         width: clockRow.width + 24
-        color: isCalendarHovered ? Settings.hoverColor : Settings.hoverLight 
+        color: isCalendarHovered ? Settings.hoverColor : Settings.surfaceColor 
         radius: height / 2
         scale: isCalendarHovered ? 1.05 : 1.0 
 
@@ -3916,7 +3916,7 @@ PanelWindow {
                     height: 8
                     anchors.verticalCenter: parent.verticalCenter
                     radius: 4
-                    color: Settings.hoverLight
+                    color: Settings.surfaceColor
 
                     Rectangle {
                         width: Math.max(0, parent.width * window.osdValue)
