@@ -11,7 +11,7 @@ import Quickshell.Bluetooth
 
 PanelWindow {
     id: window
-    property real autoUiScale: Settings.autoScale ? ((Settings.barHeight - Settings.cornerRadius) / 43.0) : 1.0
+    property real autoUiScale: Settings.autoScale ? (Settings.barHeight / 70.0) : 1.0
     anchors {
         top: true
         left: true
@@ -888,7 +888,7 @@ PanelWindow {
         anchors.right: workspaceRow.left
         anchors.rightMargin: 16
         anchors.top: parent.top
-        anchors.topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
+        anchors.topMargin: (Settings.barHeight - height) / 2
         height: 28 * window.autoUiScale
         property bool overrideCat: false
         property bool useAlien: Settings.mediaPet === "alien"
@@ -1522,7 +1522,7 @@ PanelWindow {
         id: workspaceRow
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
+        anchors.topMargin: (Settings.barHeight - height) / 2
         spacing: 8 * window.autoUiScale
 
         Repeater {
@@ -1581,7 +1581,7 @@ PanelWindow {
             left: parent.left
             leftMargin: 20 * window.autoUiScale
             top: parent.top
-            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
+            topMargin: (Settings.barHeight - height) / 2
         }
         width: 32 * window.autoUiScale
         height: 32 * window.autoUiScale
@@ -1623,7 +1623,7 @@ PanelWindow {
             left: settingsButton.right
             leftMargin: 12 * window.autoUiScale
             top: parent.top
-            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
+            topMargin: (Settings.barHeight - height) / 2
         }
         height: 28 * window.autoUiScale
         width: 28 * window.autoUiScale
@@ -1698,7 +1698,7 @@ PanelWindow {
             right: parent.right
             rightMargin: 20 * window.autoUiScale
             top: parent.top
-            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
+            topMargin: (Settings.barHeight - height) / 2
         }
         height: 28 * window.autoUiScale
         width: 108 * window.autoUiScale
@@ -2787,7 +2787,7 @@ PanelWindow {
             right: wifiContainer.left
             rightMargin: 10 * window.autoUiScale
             top: parent.top
-            topMargin: ((Settings.barHeight - Settings.cornerRadius) - height) / 2
+            topMargin: (Settings.barHeight - height) / 2
         }
         height: 28 * window.autoUiScale
         width: clockRow.width + 24

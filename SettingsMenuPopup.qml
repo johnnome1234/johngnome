@@ -89,7 +89,7 @@ Item {
         height: 420
         anchors.centerIn: parent
         radius: Settings.cornerRadius
-        color: Settings.backgroundColor
+        color: Settings.surfaceColor
         border.color: Settings.borderColor
         border.width: 1
         opacity: isOpen ? 1.0 : 0.0
@@ -308,6 +308,15 @@ Item {
                             settingsKey: Settings.isDarkMode ? "theme.colors.surface_dark" : "theme.colors.surface"
                             defaultColor: "#d4c4b0"
                             currentColor: Settings.surfaceColor
+                            opacity: Settings.syncModeEnabled ? 0.5 : 1.0
+                            enabled: !Settings.syncModeEnabled
+                        }
+
+                        ColorPickerRow {
+                            label: "font color"
+                            settingsKey: Settings.isDarkMode ? "theme.colors.text_primary_dark" : "theme.colors.text_primary"
+                            defaultColor: "#2d2722"
+                            currentColor: Settings.textPrimary
                             opacity: Settings.syncModeEnabled ? 0.5 : 1.0
                             enabled: !Settings.syncModeEnabled
                         }

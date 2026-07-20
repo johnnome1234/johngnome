@@ -10,7 +10,7 @@ date_format = "MMMM yyyy"
 exclusive_zone = 45
 bar_height = 70
 
-auto_scale = true
+auto_scale = false
 [shell.animation]
 enabled = true
 speed = 1.0
@@ -19,12 +19,12 @@ speed = 1.0
 launcher_placement = "centered"
 
 [theme]
-mode = "light"
+mode = "dark"
 
 sync_mode = true
 [theme.colors]
 background = "#e6dcce"
-background_dark = "#e6dcce"
+background_dark = "#33343a"
 border = "#cbbda8"
 accent = "#a05e26"
 text_primary = "#2d2722"
@@ -37,7 +37,7 @@ error = "#c04040"
 active_accent = "#e0af68"
 notification_badge = "#d04040"
 
-surface_dark = "#d4c4b0"
+surface_dark = "#9d7a4d"
 [widgets.weather]
 latitude = 37.3394
 longitude = -121.895
