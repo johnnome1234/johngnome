@@ -257,14 +257,14 @@ Item {
                         ColorPickerRow {
                             label: "bar color"
                             settingsKey: Settings.isDarkMode ? "theme.colors.background_dark" : "theme.colors.background"
-                            defaultColor: Settings.isDarkMode ? "#2d2722" : "#e6dcce"
+                            defaultColor: "#e6dcce"
                             currentColor: Settings.backgroundColor
                         }
 
                         ColorPickerRow {
                             label: "container color"
                             settingsKey: Settings.isDarkMode ? "theme.colors.surface_dark" : "theme.colors.surface"
-                            defaultColor: Settings.isDarkMode ? "#3d352d" : "#d4c4b0"
+                            defaultColor: "#d4c4b0"
                             currentColor: Settings.surfaceColor
                         }
 

@@ -98,7 +98,7 @@ Column {
                     if (lastDot !== -1) {
                         var section = root.settingsKey.substring(0, lastDot);
                         var key = root.settingsKey.substring(lastDot + 1);
-                        Settings.setValue(section, key, newColor.toString(), true);
+                        Settings.setValue(section, key, newColor, true);
                     }
                 }
                 onColorSettled: function(newColor) {
@@ -106,7 +106,7 @@ Column {
                     if (lastDot !== -1) {
                         var section = root.settingsKey.substring(0, lastDot);
                         var key = root.settingsKey.substring(lastDot + 1);
-                        Settings.setValue(section, key, newColor.toString(), false);
+                        Settings.setValue(section, key, newColor, false);
                     }
                 }
             }

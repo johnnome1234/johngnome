@@ -23,20 +23,20 @@ mode = "dark"
 
 [theme.colors]
 background = "#e6dcce"
-background_dark = "#ffffff"
+background_dark = "#2d2722"
 border = "#cbbda8"
 accent = "#a05e26"
 text_primary = "#2d2722"
 text_secondary = "#8a7e72"
 text_on_dark = "#f5e0c3"
-surface = "#d4c4b0"
+surface = "#2d75c0"
 hover = "#24000000"
 hover_light = "#12000000"
 error = "#c04040"
 active_accent = "#e0af68"
 notification_badge = "#d04040"
 
-surface_dark = "#7c4eb0"
+surface_dark = "#09849f"
 [widgets.weather]
 latitude = 37.3394
 longitude = -121.895

@@ -6,8 +6,8 @@ Item {
     height: 180
 
     property color selectedColor: "#ffffff"
-    signal colorChanged(color newColor)
-    signal colorSettled(color newColor)
+    signal colorChanged(string newColor)
+    signal colorSettled(string newColor)
 
     property real currentHue: 0.0
     property real currentSat: 1.0
