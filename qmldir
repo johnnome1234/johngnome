@@ -2,3 +2,5 @@ singleton GlobalClock 1.0 globalclock.qml
 singleton Settings 1.0 settings.qml
 
 SettingsMenuPopup 1.0 SettingsMenuPopup.qml
+ColorPicker 1.0 ColorPicker.qml
+ColorPickerRow 1.0 ColorPickerRow.qml

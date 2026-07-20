@@ -3,12 +3,12 @@
 
 [shell]
 ui_scale = 1.0
-corner_radius = 0
+corner_radius = 27
 font_family = "sans-serif"
 time_format = "hh:mm AP"
 date_format = "MMMM yyyy"
 exclusive_zone = 45
-bar_height = 46
+bar_height = 70
 
 auto_scale = true
 [shell.animation]
@@ -23,7 +23,7 @@ mode = "dark"
 
 [theme.colors]
 background = "#e6dcce"
-background_dark = "#2d2722"
+background_dark = "#ffffff"
 border = "#cbbda8"
 accent = "#a05e26"
 text_primary = "#2d2722"
@@ -36,6 +36,7 @@ error = "#c04040"
 active_accent = "#e0af68"
 notification_badge = "#d04040"
 
+surface_dark = "#7c4eb0"
 [widgets.weather]
 latitude = 37.3394
 longitude = -121.895

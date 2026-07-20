@@ -254,80 +254,18 @@ Item {
                             font.pixelSize: 18
                         }
 
-                        Row {
-                            width: parent.width
-                            spacing: 15
-                            Text {
-                                text: "bar color"
-                                color: Settings.textPrimary
-                                font.pixelSize: 14
-                                width: 130
-                                anchors.verticalCenter: parent.verticalCenter
-                            }
-                            Row {
-                                spacing: 10
-                                anchors.verticalCenter: parent.verticalCenter
-                                Repeater {
-                                    model: ["#2d2722", "#1e1e2e", "#282a36", "#1a1b26", "#0f1419", "#000000", "#e6dcce", "#ffffff"]
-                                    delegate: Rectangle {
-                                        width: 20
-                                        height: 20
-                                        radius: 10
-                                        color: modelData
-                                        border.width: Settings.backgroundColor === modelData || Settings.backgroundDark === modelData ? 2 : 1
-                                        border.color: Settings.backgroundColor === modelData || Settings.backgroundDark === modelData ? Settings.accentColor : Settings.borderColor
-                                        MouseArea {
-                                            anchors.fill: parent
-                                            cursorShape: Qt.PointingHandCursor
-                                            onClicked: {
-                                                if (Settings.isDarkMode) {
-                                                    Settings.setValue("theme.colors", "background_dark", modelData, false);
-                                                } else {
-                                                    Settings.setValue("theme.colors", "background", modelData, false);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                        ColorPickerRow {
+                            label: "bar color"
+                            settingsKey: Settings.isDarkMode ? "theme.colors.background_dark" : "theme.colors.background"
+                            defaultColor: Settings.isDarkMode ? "#2d2722" : "#e6dcce"
+                            currentColor: Settings.backgroundColor
                         }
 
-                        Row {
-                            width: parent.width
-                            spacing: 15
-                            Text {
-                                text: "container color"
-                                color: Settings.textPrimary
-                                font.pixelSize: 14
-                                width: 130
-                                anchors.verticalCenter: parent.verticalCenter
-                            }
-                            Row {
-                                spacing: 10
-                                anchors.verticalCenter: parent.verticalCenter
-                                Repeater {
-                                    model: ["#3d352d", "#181825", "#44475a", "#24283b", "#14191f", "#111111", "#d4c4b0", "#f4f4f4"]
-                                    delegate: Rectangle {
-                                        width: 20
-                                        height: 20
-                                        radius: 10
-                                        color: modelData
-                                        border.width: Settings.surfaceColor === modelData ? 2 : 1
-                                        border.color: Settings.surfaceColor === modelData ? Settings.accentColor : Settings.borderColor
-                                        MouseArea {
-                                            anchors.fill: parent
-                                            cursorShape: Qt.PointingHandCursor
-                                            onClicked: {
-                                                if (Settings.isDarkMode) {
-                                                    Settings.setValue("theme.colors", "surface_dark", modelData, false);
-                                                } else {
-                                                    Settings.setValue("theme.colors", "surface", modelData, false);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                        ColorPickerRow {
+                            label: "container color"
+                            settingsKey: Settings.isDarkMode ? "theme.colors.surface_dark" : "theme.colors.surface"
+                            defaultColor: Settings.isDarkMode ? "#3d352d" : "#d4c4b0"
+                            currentColor: Settings.surfaceColor
                         }
 
                         Row {
