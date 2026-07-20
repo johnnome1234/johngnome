@@ -180,6 +180,11 @@ Item {
     // exposed properties
 
     property bool isDarkMode: false
+    property bool syncModeEnabled: _get("theme.sync_mode", true)
+
+    function setSyncMode(enabled) {
+        setValue("theme", "sync_mode", enabled, false);
+    }
 
     // theme colors
     property string backgroundColor: isDarkMode ? _get("theme.colors.background_dark", "#2d2722") : _get("theme.colors.background", "#e6dcce")

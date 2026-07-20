@@ -254,11 +254,53 @@ Item {
                             font.pixelSize: 18
                         }
 
+                        Row {
+                            width: parent.width
+                            spacing: 15
+                            Text {
+                                text: "sync with dark mode"
+                                color: Settings.textPrimary
+                                font.pixelSize: 14
+                                width: 130
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            
+                            Rectangle {
+                                width: 36
+                                height: 20
+                                radius: 10
+                                color: Settings.syncModeEnabled ? Settings.accentColor : Settings.hoverLight
+                                border.color: Settings.borderColor
+                                border.width: 1
+                                anchors.verticalCenter: parent.verticalCenter
+                                
+                                Rectangle {
+                                    width: 16
+                                    height: 16
+                                    radius: 8
+                                    color: Settings.backgroundColor
+                                    y: 2
+                                    x: Settings.syncModeEnabled ? 18 : 2
+                                    Behavior on x { enabled: Settings.animationEnabled; NumberAnimation { duration: 150 } }
+                                }
+                                
+                                MouseArea {
+                                    anchors.fill: parent
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: {
+                                        Settings.setSyncMode(!Settings.syncModeEnabled);
+                                    }
+                                }
+                            }
+                        }
+
                         ColorPickerRow {
                             label: "bar color"
                             settingsKey: Settings.isDarkMode ? "theme.colors.background_dark" : "theme.colors.background"
                             defaultColor: "#e6dcce"
                             currentColor: Settings.backgroundColor
+                            opacity: Settings.syncModeEnabled ? 0.5 : 1.0
+                            enabled: !Settings.syncModeEnabled
                         }
 
                         ColorPickerRow {
@@ -266,6 +308,8 @@ Item {
                             settingsKey: Settings.isDarkMode ? "theme.colors.surface_dark" : "theme.colors.surface"
                             defaultColor: "#d4c4b0"
                             currentColor: Settings.surfaceColor
+                            opacity: Settings.syncModeEnabled ? 0.5 : 1.0
+                            enabled: !Settings.syncModeEnabled
                         }
 
                         Row {

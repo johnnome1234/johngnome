@@ -2256,6 +2256,8 @@ PanelWindow {
                     height: 64
                     radius: 10
                     color: Settings.isDarkMode ? Settings.accentColor : (darkModeWidgetMouse.containsMouse ? Settings.hoverColor : Settings.hoverLight)
+                    opacity: Settings.syncModeEnabled ? 1.0 : 0.5
+                    enabled: Settings.syncModeEnabled
                     
                     Column {
                         anchors.centerIn: parent
