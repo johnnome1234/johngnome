@@ -21,6 +21,7 @@ launcher_placement = "centered"
 [theme]
 mode = "light"
 
+sync_mode = true
 [theme.colors]
 background = "#e6dcce"
 background_dark = "#e6dcce"
