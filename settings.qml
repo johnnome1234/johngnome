@@ -202,6 +202,7 @@ Item {
     readonly property string fontFamily: _get("shell.font_family", "sans-serif")
     readonly property int exclusiveZone: _get("shell.exclusive_zone", 45)
     readonly property int barHeight: _get("shell.bar_height", 70)
+    readonly property int barOpacity: _get("shell.bar_opacity", 100)
 
     // animation
     readonly property bool animationEnabled: _get("shell.animation.enabled", true)

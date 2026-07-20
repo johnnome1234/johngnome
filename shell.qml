@@ -816,6 +816,7 @@ PanelWindow {
 
     Canvas {
         id: barCanvas
+        opacity: Settings.barOpacity / 100.0
         property string watchBg: Settings.backgroundColor
         property string watchBd: Settings.borderColor
         property real watchCr: Settings.cornerRadius

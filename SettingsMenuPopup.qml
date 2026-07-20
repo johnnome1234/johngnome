@@ -558,6 +558,103 @@ Item {
                             width: parent.width
                             spacing: 15
                             Text {
+                                text: "transparency"
+                                color: Settings.textPrimary
+                                font.pixelSize: 14
+                                width: 130
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            Item {
+                                width: parent.width - 275
+                                height: 20
+                                anchors.verticalCenter: parent.verticalCenter
+
+                                Rectangle {
+                                    id: opTrack
+                                    width: parent.width
+                                    height: 4
+                                    radius: 2
+                                    color: Settings.hoverLight
+                                    anchors.verticalCenter: parent.verticalCenter
+
+                                    Rectangle {
+                                        width: (Settings.barOpacity / 100) * parent.width
+                                        height: 4
+                                        radius: 2
+                                        color: Settings.accentColor
+                                    }
+                                }
+
+                                Rectangle {
+                                    x: (Settings.barOpacity / 100) * (parent.width - width)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: 14
+                                    height: 14
+                                    radius: 7
+                                    color: Settings.textPrimary
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    anchors.margins: -10
+                                    cursorShape: Qt.PointingHandCursor
+                                    onPositionChanged: function(mouse) {
+                                        if (pressed) {
+                                            var ratio = Math.max(0, Math.min(1, mouse.x / width));
+                                            var val = Math.round(ratio * 100);
+                                            Settings.setValue("shell", "bar_opacity", val, true);
+                                        }
+                                    }
+                                    onReleased: function(mouse) {
+                                        var ratio = Math.max(0, Math.min(1, mouse.x / width));
+                                        var val = Math.round(ratio * 100);
+                                        Settings.setValue("shell", "bar_opacity", val, true);
+                                    }
+                                    onClicked: function(mouse) {
+                                        var ratio = Math.max(0, Math.min(1, mouse.x / width));
+                                        var val = Math.round(ratio * 100);
+                                        Settings.setValue("shell", "bar_opacity", val, true);
+                                    }
+                                }
+                            }
+                            Text {
+                                text: Settings.barOpacity + "%"
+                                color: Settings.textSecondary
+                                font.pixelSize: 12
+                                width: 35
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+
+                            // Reset Button
+                            Rectangle {
+                                width: 40
+                                height: 22
+                                radius: 4
+                                color: resetOpMouse.containsMouse ? Settings.hoverLight : "transparent"
+                                border.color: Settings.borderColor
+                                border.width: 1
+                                anchors.verticalCenter: parent.verticalCenter
+                                Text {
+                                    text: "reset"
+                                    font.pixelSize: 10
+                                    font.bold: true
+                                    color: Settings.textSecondary
+                                    anchors.centerIn: parent
+                                }
+                                MouseArea {
+                                    id: resetOpMouse
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: Settings.setValue("shell", "bar_opacity", 100, true)
+                                }
+                            }
+                        }
+
+                        Row {
+                            width: parent.width
+                            spacing: 15
+                            Text {
                                 text: "auto scale UI"
                                 color: Settings.textPrimary
                                 font.pixelSize: 14
